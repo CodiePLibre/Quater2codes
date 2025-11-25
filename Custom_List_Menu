@@ -1,0 +1,63 @@
+subjects = []
+
+def main_menu():
+    print("\n===MAIN MENU===")
+    print("[1] Show all subjects")
+    print("[2] Add subject")
+    print("[3] Search subject")
+    print("[4] Remove subject")
+    print("[5] Remove all subjects")
+    print("[-1] Exit")
+    
+while True:
+    main_menu()
+    try:
+        choice = int(input("Enter your choice: "))
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+    
+    match choice:
+        case 1:
+            if len(subjects) >= 1:
+                print("Subjects: ", subjects)
+            else:
+                print("No subjects found.")
+            input("Press Enter to continue.")
+        
+        case 2:
+            new_subject = input("Enter new subject: ")
+            subjects.append(new_subject)
+            print(f"{new_subject} has been added to the list.")
+            input("Press Enter to continue.")
+            
+        case 3:
+            sub = input("Enter the subject you're searching for: ")
+            if sub in subjects:
+                print(f"{sub} is in the list.")
+            else:
+                print(f"{sub} is not in the list.")
+            input("Press Enter to continue.")
+            
+        case 4:
+            rem_sub = input("Enter the subject you want to remove: ")
+            if rem_sub in subjects:
+                subjects.remove(rem_sub)
+                print(f"{rem_sub} has been removed")
+            else:
+                print(f"{rem_sub} is not in the list")
+            input("Press Enter to continue.")
+            
+        case 5:
+            final = input("Are you sure you want to remove all subjects? ")
+            if final == 'yes':
+                subjects.clear()
+                print("All subjects were removed from the list.")
+                input("Press Enter to continue.")
+            else:
+                print("Going back to menu.")
+                input("Press Enter to continue.")
+            
+        case _:
+            print("Invalid choice. Please try again.")
+            input("Press Enter to continue...")
